@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="MESH.h" />
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="timer.h" />
+    <ClInclude Include="graphic.h" />
+    <ClInclude Include="input.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="graphic.cpp" />
+    <ClCompile Include="input.cpp" />
+    <ClCompile Include="MESH.cpp" />
+    <ClCompile Include="timer.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="hlsl">
+      <UniqueIdentifier>{d655b755-cba1-4998-917d-d71bc52af4d7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Header.hlsli">
+      <Filter>hlsl</Filter>
+    </None>
+  </ItemGroup>
+</Project>
