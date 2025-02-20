@@ -6,6 +6,7 @@
     <ClInclude Include="timer.h" />
     <ClInclude Include="graphic.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="CONVERTER.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="graphic.cpp" />
@@ -13,6 +14,7 @@
     <ClCompile Include="MESH.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="CONVERTER.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="PixelShader.hlsl">

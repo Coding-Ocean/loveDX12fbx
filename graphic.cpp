@@ -500,7 +500,7 @@ void beginDraw() {
 	CommandList->OMSetRenderTargets(1, &hBbvHeap, false, &hDsvHeap);
 
 	//描画ターゲットをクリアする
-	const float clearColor[] = { 0.8f, 0.9f, 0.8f, 1.0f };
+	const float clearColor[] = { 0.15f, 0.15f, 0.15f, 1.0f };
 	CommandList->ClearRenderTargetView(hBbvHeap, clearColor, 0, nullptr);
 
 	//デプスステンシルバッファをクリアする
@@ -592,7 +592,7 @@ void waitGPU()
 }
 
 //コンスタントバッファのサイズを２５６の倍数にして返す
-UINT calcSize(UINT size) {
+UINT alignedSize(UINT size) {
 	return (size + 255) & ~255;
 }
 //以下、Deviceで呼び出す関数をラップする。
@@ -833,7 +833,7 @@ UINT getCbvTbvSize() {
 //コンスタントバッファ０。共有します。
 void createSharedConstBuf0() {
 	//コンスタントバッファ0をつくる
-	createBuffer(calcSize(sizeof(Cb0)), &ConstBuf0);
+	createBuffer(alignedSize(sizeof(Cb0)), &ConstBuf0);
 	mapBuffer(ConstBuf0, (void**)&Cb0);
 	//全メッシュで共有するコピー元ディスクリプタヒープをつくる
 	createSharedCbvTbvHeap(&Cb0vHeap, 1);

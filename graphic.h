@@ -16,7 +16,7 @@ void closeWindow();
 void waitGPU();
 
 //コンスタントバッファのサイズを２５６の倍数にして返す
-UINT calcSize(UINT size);
+UINT alignedSize(UINT size);
 //Resource系関数
 HRESULT createBuffer(UINT size, ID3D12Resource** buffer);
 HRESULT updateBuffer(ID3D12Resource* buffer, void* data, UINT size);

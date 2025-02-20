@@ -35,7 +35,7 @@ MESH::~MESH()
 void MESH::create(const char* filename)
 {
 	//world matrix用コンスタントバッファ1をつくる
-	createBuffer(calcSize(sizeof(Cb1)), &ConstBuf1);
+	createBuffer(alignedSize(sizeof(Cb1)), &ConstBuf1);
 	mapBuffer(ConstBuf1, (void**)&Cb1);
 	//このメッシュの全パーツで共有するコピー元ディスクリプタヒープをつくる
 	createSharedCbvTbvHeap(&Cb1vHeap, 1);
@@ -130,7 +130,7 @@ void MESH::create(const char* filename)
 			file >> specular.x >> specular.y >> specular.z >> specular.w;
 
 			//コンスタントバッファ２をつくる
-			Hr = createBuffer(calcSize(sizeof(CB2)), &Parts[k].ConstBuf2);
+			Hr = createBuffer(alignedSize(sizeof(CB2)), &Parts[k].ConstBuf2);
 			assert(SUCCEEDED(Hr));
 
 			//マップして更新。unmapしない。

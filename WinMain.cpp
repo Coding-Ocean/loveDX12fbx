@@ -1,6 +1,7 @@
 #include"graphic.h"
 #include"input.h"
 #include"timer.h"
+#include"CONVERTER.h"
 #include"MESH.h"
 
 INT WINAPI wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ PWSTR, _In_ INT)
@@ -10,8 +11,8 @@ INT WINAPI wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ PWSTR, _In_ INT)
 	//今回viewProjとlightPosはアニメーションしないので始めで用意しちゃう
 	{
 		//ビューマトリックス
-		float h = 0.5f;
-		XMVECTOR eye = { 0, h, -2.0f }, focus = { 0, h, 0 }, up = { 0, 1, 0 };
+		float h = 0.8f;
+		XMVECTOR eye = { 0, h, -3.0f }, focus = { 0, h, 0 }, up = { 0, 1, 0 };
 		XMMATRIX view = XMMatrixLookAtLH(eye, focus, up);
 		//プロジェクションマトリックス
 		XMMATRIX proj = XMMatrixPerspectiveFovLH(XM_PIDIV4, getAspect(), 0.1f, 31.0f);
@@ -25,9 +26,37 @@ INT WINAPI wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ PWSTR, _In_ INT)
 	}
 
 	const char* text[] = {
-		"assets\\penguin\\penguin1.txt",
-		"assets\\penguin\\penguin2.txt",
+		"assets\\lowpoly\\sword.txt",
+		"assets\\lowpoly\\chara.txt",
+		"assets\\banana\\banana.txt",
+		"assets\\alicia\\Alicia.txt",
 	};
+
+#if 1
+	const char* fbx[] = {
+		"assets\\lowpoly\\sword.fbx",
+		"assets\\lowpoly\\chara.fbx",
+		"assets\\banana\\banana.fbx",
+		"assets\\alicia\\Alicia.fbx",
+	};
+	//変換スケール値 配列
+	float s[] = {
+		0.02f,	//sword
+		0.01f,	//chara
+		1,		//banana
+		0.01f,	//alicia
+	};
+	//FbxをTextにコンバート
+	CONVERTER cv;
+	int n = _countof(fbx);
+	int i;
+	//Maya fbx
+	for (i = 0; i < n - 1; ++i) {
+		cv.fbxtotxt(fbx[i], text[i], s[i], s[i], -s[i]);
+	}
+	//Max fbx
+	cv.fbxtotxt(fbx[i], text[i], s[i], s[i], s[i], 0, 2, 1);
+#endif
 
 	//メッシュインスタンス
 	const int num = _countof(text);
@@ -41,7 +70,7 @@ INT WINAPI wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ PWSTR, _In_ INT)
 	float radian = 0;
 	//タイマー初期化
 	initDeltaTime();
-	
+
 	//メインループ
 	while (!quit())
 	{
@@ -52,7 +81,7 @@ INT WINAPI wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ PWSTR, _In_ INT)
 		if (isTrigger(KEY_RIGHT)) { ++idx %= num; radian = 0; }
 		if (isTrigger(KEY_LEFT)) { --idx; if (idx < 0)idx += num; radian = 0; }
 		radian += 0.7f * delta;
-		meshes[idx].ry(sinf(radian));
+		meshes[idx].ry(radian);
 		meshes[idx].update();
 		//draw
 		beginDraw();
