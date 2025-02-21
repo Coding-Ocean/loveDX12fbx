@@ -52,7 +52,7 @@ INT WINAPI wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ PWSTR, _In_ INT)
 	int i;
 	//Maya fbx
 	for (i = 0; i < n - 1; ++i) {
-		cv.fbxtotxt(fbx[i], text[i], s[i], s[i], -s[i]);
+		cv.fbxtotxt(fbx[i], text[i], s[i], s[i], -s[i], 0, 1, 2);
 	}
 	//Max fbx
 	cv.fbxtotxt(fbx[i], text[i], s[i], s[i], s[i], 0, 2, 1);
