@@ -1,10 +1,7 @@
 #pragma once
 
-//#define USE_INDEX
-
 #include<d3d12.h>
 #include<DirectXMath.h>
-#include<map>
 using namespace DirectX;
 
 //１つのメッシュに１つのCB1
@@ -55,12 +52,6 @@ private:
         UINT NumVertices;
         ID3D12Resource* VertexBuf;
         D3D12_VERTEX_BUFFER_VIEW VertexBufView;
-#ifdef USE_INDEX
-        //頂点インデックスバッファ
-        UINT NumIndices;
-        ID3D12Resource* IndexBuf;
-        D3D12_INDEX_BUFFER_VIEW	IndexBufView;
-#endif
         //コンスタントバッファ2(マテリアル)
         CB2* Cb2;//マップしたアドレスを入れる
         ID3D12Resource* ConstBuf2;

@@ -80,7 +80,7 @@ void window(int width, int height, bool fullscreenFlag)
 	createDevice();
 	createRenderTarget();
 	createPipeline();
-	createSharedConstBuf0();
+	createSharedConstBuf0();//ぽいんと
 
 	createInput();
 
@@ -500,7 +500,7 @@ void beginDraw() {
 	CommandList->OMSetRenderTargets(1, &hBbvHeap, false, &hDsvHeap);
 
 	//描画ターゲットをクリアする
-	const float clearColor[] = { 0.8f, 0.9f, 0.8f, 1.0f };
+	const float clearColor[] = { 0.6f, 0.7f, 0.6f, 1.0f };
 	CommandList->ClearRenderTargetView(hBbvHeap, clearColor, 0, nullptr);
 
 	//デプスステンシルバッファをクリアする
@@ -572,8 +572,6 @@ void destroy() {
 
 	timeEndPeriod(1);
 }
-
-// 描画完了を待つ
 void waitGPU()
 {
 	//現在のFence値がコマンド終了後にFenceに書き込まれるようにする
@@ -846,7 +844,7 @@ void updateLightPos(XMFLOAT4& lightPos) {
 	Cb0->lightPos = lightPos;
 }
 
-//数学系だけどここに作ってます
+//数学系だけど、ここに作ってます
 void normalizeXMFLOAT4(XMFLOAT4& vector) {
 	// XMFLOAT4をXMVECTORに変換
 	XMVECTOR v = XMLoadFloat4(&vector);
