@@ -21,9 +21,6 @@ MESH::~MESH()
 		Parts[k].TextureBuf->Release();
 		Parts[k].ConstBuf2->Unmap(0, nullptr);
 		Parts[k].ConstBuf2->Release();
-#ifdef USE_INDEX
-		Parts[k].IndexBuf->Release();
-#endif
 		Parts[k].VertexBuf->Release();
 	}
 	delete[] Parts;
