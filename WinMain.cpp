@@ -6,7 +6,7 @@
 
 INT WINAPI wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ PWSTR, _In_ INT)
 {
-	window(1920, 1200, true);
+	window(1920, 1080, true);
 
 	//今回viewProjとlightPosはアニメーションしないので始めで用意しちゃう
 	{
@@ -32,7 +32,7 @@ INT WINAPI wWinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ PWSTR, _In_ INT)
 		"assets\\alicia\\Alicia.txt",
 	};
 
-#if 1
+#if 0
 	const char* fbx[] = {
 		"assets\\lowpoly\\sword.fbx",
 		"assets\\lowpoly\\chara.fbx",
