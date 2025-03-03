@@ -42,9 +42,6 @@ private:
     }* Parts;
 
     //③最後に、テキストデータを出力します
-    void CreateText(const char* txtFilename, float fx, float fy, float fz);
     void CreateTextConbineVertex(const char* txtFilename, float fx, float fy, float fz);
+    void CreateText(const char* txtFilename, float fx, float fy, float fz);
 };
-
-//テキストファイル内の ".psd" を ".tga" に置き換える
-void replacePSDtoTGA(const std::string& inputFile, const std::string& outputFile);
